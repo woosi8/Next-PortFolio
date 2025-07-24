@@ -2,25 +2,33 @@
 
 import { useAuth } from "@/hooks/useAuth";
 import { useRouter } from "next/navigation";
+import { useDarkMode } from "@/hooks/useDarkMode";
 
 const Header = () => {
   const { logout } = useAuth();
   const router = useRouter();
+  const { isDarkMode, toggleDarkMode } = useDarkMode();
 
   const handleLogout = () => {
     logout();
     router.push("/login");
   };
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-black/90 backdrop-blur-sm">
+    <header className={`fixed top-0 left-0 right-0 z-50 backdrop-blur-sm transition-colors duration-300 ${
+      isDarkMode ? 'bg-black/90' : 'bg-white/90'
+    }`}>
       <div className="max-w-7xl mx-auto px-6 py-4">
         <nav className="flex items-center justify-between">
-          <div className="text-xl font-bold text-white">CHOI HYUCK</div>
+          <div className={`text-xl font-bold transition-colors duration-300 ${
+            isDarkMode ? 'text-white' : 'text-black'
+          }`}>CHOI HYUCK</div>
 
           <div className="hidden md:flex items-center space-x-8">
             <a
               href="#experience"
-              className="text-white hover:text-blue-400 transition-colors cursor-pointer"
+              className={`hover:text-blue-400 transition-colors cursor-pointer ${
+                isDarkMode ? 'text-white' : 'text-black'
+              }`}
               onClick={(e) => {
                 e.preventDefault();
                 document
@@ -32,7 +40,9 @@ const Header = () => {
             </a>
             <a
               href="#project"
-              className="text-white hover:text-blue-400 transition-colors cursor-pointer"
+              className={`hover:text-blue-400 transition-colors cursor-pointer ${
+                isDarkMode ? 'text-white' : 'text-black'
+              }`}
               onClick={(e) => {
                 e.preventDefault();
                 document
@@ -44,7 +54,9 @@ const Header = () => {
             </a>
             <a
               href="#skill"
-              className="text-white hover:text-blue-400 transition-colors cursor-pointer"
+              className={`hover:text-blue-400 transition-colors cursor-pointer ${
+                isDarkMode ? 'text-white' : 'text-black'
+              }`}
               onClick={(e) => {
                 e.preventDefault();
                 document
@@ -56,7 +68,9 @@ const Header = () => {
             </a>
             <a
               href="#award"
-              className="text-white hover:text-blue-400 transition-colors cursor-pointer"
+              className={`hover:text-blue-400 transition-colors cursor-pointer ${
+                isDarkMode ? 'text-white' : 'text-black'
+              }`}
               onClick={(e) => {
                 e.preventDefault();
                 document
@@ -68,7 +82,9 @@ const Header = () => {
             </a>
             <a
               href="#certificate"
-              className="text-white hover:text-blue-400 transition-colors cursor-pointer"
+              className={`hover:text-blue-400 transition-colors cursor-pointer ${
+                isDarkMode ? 'text-white' : 'text-black'
+              }`}
               onClick={(e) => {
                 e.preventDefault();
                 document
@@ -80,7 +96,9 @@ const Header = () => {
             </a>
             <a
               href="#contact"
-              className="text-white hover:text-blue-400 transition-colors cursor-pointer"
+              className={`hover:text-blue-400 transition-colors cursor-pointer ${
+                isDarkMode ? 'text-white' : 'text-black'
+              }`}
               onClick={(e) => {
                 e.preventDefault();
                 document
@@ -93,8 +111,11 @@ const Header = () => {
           </div>
 
           <div className="flex items-center space-x-4">
-            <button className="w-8 h-8 bg-gray-700 rounded-full flex items-center justify-center">
-              🌙
+            <button 
+              onClick={toggleDarkMode}
+              className="w-8 h-8 bg-gray-700 rounded-full flex items-center justify-center hover:bg-gray-600 transition-colors"
+            >
+              {isDarkMode ? "🌙" : "☀️"}
             </button>
             <button className="w-8 h-8 bg-gray-700 rounded-full flex items-center justify-center">
               🌐

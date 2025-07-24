@@ -1,8 +1,10 @@
 "use client";
 
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
+import { useDarkMode } from "@/hooks/useDarkMode";
 
 const Intro = () => {
+  const { isDarkMode } = useDarkMode();
   const { ref, isVisible } = useScrollAnimation();
   
   return (
@@ -59,9 +61,13 @@ const Intro = () => {
           </div>
         </div>
 
-        <div className="mt-16 bg-gray-900 rounded-lg p-8">
+        <div className={`mt-16 rounded-lg p-8 transition-colors duration-300 ${
+          isDarkMode ? 'bg-gray-900' : 'bg-gray-100'
+        }`}>
           <h2 className="text-2xl font-bold mb-6 text-blue-400">INTRO</h2>
-          <div className="text-gray-300 space-y-4">
+          <div className={`space-y-4 transition-colors duration-300 ${
+            isDarkMode ? 'text-gray-300' : 'text-gray-700'
+          }`}>
             <p>Web을 다루는 4년차 개발자 최 혁 입니다.</p>
             <p>
               가우디오랩에서 프론트엔드 리드로, 가우디오웹의 B2B, 또는 B2C,

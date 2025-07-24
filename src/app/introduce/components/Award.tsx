@@ -1,8 +1,10 @@
 "use client";
 
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
+import { useDarkMode } from "@/hooks/useDarkMode";
 
 const Award = () => {
+  const { isDarkMode } = useDarkMode();
   const { ref, isVisible } = useScrollAnimation();
   const awards = [
     {
@@ -42,21 +44,25 @@ const Award = () => {
       <div className="max-w-6xl mx-auto">
         <div 
           ref={ref}
-          className={`bg-gray-900 rounded-lg p-8 transition-all duration-1000 ease-out ${
+          className={`rounded-lg p-8 transition-all duration-1000 ease-out ${
+            isDarkMode ? 'bg-gray-900' : 'bg-gray-100'
+          } ${
             isVisible 
               ? 'opacity-100 translate-y-0' 
               : 'opacity-0 translate-y-10'
           }`}
         >
           <h2 className="text-2xl font-bold mb-6 text-blue-400">AWARD</h2>
-          <p className="text-gray-400 mb-8">
+          <p className={`mb-8 ${isDarkMode ? 'text-gray-400' : 'text-gray-600'}`}>
             담핑고 있던 서비스를 킴득하거 히력, 주안한 부딪 영어외 좋촉고 있젓릅 셔롭특별 다나띄니다.
           </p>
 
           <div className="space-y-8">
             {awards.map((award, index) => (
               <div key={index} className="flex items-start gap-6">
-                <div className="text-gray-400 font-medium min-w-0 flex-shrink-0">
+                <div className={`font-medium min-w-0 flex-shrink-0 ${
+                  isDarkMode ? 'text-gray-400' : 'text-gray-600'
+                }`}>
                   {award.year}
                 </div>
                 
@@ -64,8 +70,12 @@ const Award = () => {
                   <div className="flex items-start gap-4">
                     <div className="text-2xl">{award.icon}</div>
                     <div>
-                      <h3 className="text-white font-medium mb-2">{award.title}</h3>
-                      <p className="text-gray-400 text-sm">{award.description}</p>
+                      <h3 className={`font-medium mb-2 ${
+                        isDarkMode ? 'text-white' : 'text-gray-900'
+                      }`}>{award.title}</h3>
+                      <p className={`text-sm ${
+                        isDarkMode ? 'text-gray-400' : 'text-gray-600'
+                      }`}>{award.description}</p>
                     </div>
                   </div>
                 </div>

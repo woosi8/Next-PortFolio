@@ -1,8 +1,10 @@
 "use client";
 
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
+import { useDarkMode } from "@/hooks/useDarkMode";
 
 const Certificate = () => {
+  const { isDarkMode } = useDarkMode();
   const { ref: ref1, isVisible: isVisible1 } = useScrollAnimation();
   const { ref: ref2, isVisible: isVisible2 } = useScrollAnimation();
   const { ref: ref3, isVisible: isVisible3 } = useScrollAnimation();
@@ -85,34 +87,36 @@ const Certificate = () => {
         {/* Certificate Section */}
         <div 
           ref={ref1}
-          className={`bg-gray-900 rounded-lg p-8 transition-all duration-1000 ease-out ${
+          className={`rounded-lg p-8 transition-all duration-1000 ease-out ${
+            isDarkMode ? 'bg-gray-900' : 'bg-gray-100'
+          } ${
             isVisible1 
               ? 'opacity-100 translate-y-0' 
               : 'opacity-0 translate-y-10'
           }`}
         >
           <h2 className="text-2xl font-bold mb-6 text-blue-400">CERTIFICATE</h2>
-          <p className="text-gray-400 mb-8">
+          <p className={`mb-8 ${isDarkMode ? 'text-gray-400' : 'text-gray-600'}`}>
             자서적어 실력의 탠둘기개 수 능를있습니다. 위험한 곤곻과 부화좋박예 대한 펙든을 늘 삷 인어 좋켰습니다.
           </p>
 
           <div className="overflow-x-auto">
             <table className="w-full">
               <thead>
-                <tr className="border-b border-gray-700">
-                  <th className="text-left py-4 px-4 text-gray-400 font-medium">자격증</th>
-                  <th className="text-left py-4 px-4 text-gray-400 font-medium">취득 이유</th>
-                  <th className="text-left py-4 px-4 text-gray-400 font-medium">자격증</th>
+                <tr className={`border-b ${isDarkMode ? 'border-gray-700' : 'border-gray-300'}`}>
+                  <th className={`text-left py-4 px-4 font-medium ${isDarkMode ? 'text-gray-400' : 'text-gray-600'}`}>자격증</th>
+                  <th className={`text-left py-4 px-4 font-medium ${isDarkMode ? 'text-gray-400' : 'text-gray-600'}`}>취득 이유</th>
+                  <th className={`text-left py-4 px-4 font-medium ${isDarkMode ? 'text-gray-400' : 'text-gray-600'}`}>자격증</th>
                 </tr>
               </thead>
               <tbody>
                 {certificates.map((cert, index) => (
-                  <tr key={index} className="border-b border-gray-800">
+                  <tr key={index} className={`border-b ${isDarkMode ? 'border-gray-800' : 'border-gray-200'}`}>
                     <td className="py-6 px-4">
-                      <h3 className="text-white font-medium">{cert.name}</h3>
+                      <h3 className={`font-medium ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>{cert.name}</h3>
                     </td>
                     <td className="py-6 px-4">
-                      <p className="text-gray-300 text-sm">{cert.description}</p>
+                      <p className={`text-sm ${isDarkMode ? 'text-gray-300' : 'text-gray-700'}`}>{cert.description}</p>
                     </td>
                     <td className="py-6 px-4">
                       <span className="text-blue-400 cursor-pointer text-lg">{cert.link}</span>
@@ -127,7 +131,9 @@ const Certificate = () => {
         {/* Retrospective Section */}
         <div 
           ref={ref2}
-          className={`bg-gray-900 rounded-lg p-8 transition-all duration-1000 ease-out ${
+          className={`rounded-lg p-8 transition-all duration-1000 ease-out ${
+            isDarkMode ? 'bg-gray-900' : 'bg-gray-100'
+          } ${
             isVisible2 
               ? 'opacity-100 translate-y-0' 
               : 'opacity-0 translate-y-10'
@@ -138,12 +144,12 @@ const Certificate = () => {
           <div className="space-y-6">
             {retrospectiveItems.map((item, index) => (
               <div key={index} className="flex gap-4">
-                <div className="text-gray-400 font-bold min-w-0 flex-shrink-0 w-8">
+                <div className={`font-bold min-w-0 flex-shrink-0 w-8 ${isDarkMode ? 'text-gray-400' : 'text-gray-600'}`}>
                   {item.quarter}
                 </div>
                 <div className="flex-1">
-                  <h3 className="text-white font-medium mb-2">{item.title}</h3>
-                  <p className="text-gray-400 text-sm">{item.description}</p>
+                  <h3 className={`font-medium mb-2 ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>{item.title}</h3>
+                  <p className={`text-sm ${isDarkMode ? 'text-gray-400' : 'text-gray-600'}`}>{item.description}</p>
                 </div>
                 <div>
                   <span className="text-blue-400 cursor-pointer text-lg">{item.link}</span>
@@ -156,7 +162,9 @@ const Certificate = () => {
         {/* 2022 Retrospective Section */}
         <div 
           ref={ref3}
-          className={`bg-gray-900 rounded-lg p-8 transition-all duration-1000 ease-out ${
+          className={`rounded-lg p-8 transition-all duration-1000 ease-out ${
+            isDarkMode ? 'bg-gray-900' : 'bg-gray-100'
+          } ${
             isVisible3 
               ? 'opacity-100 translate-y-0' 
               : 'opacity-0 translate-y-10'
@@ -167,12 +175,12 @@ const Certificate = () => {
           <div className="space-y-6">
             {retrospective2022.map((item, index) => (
               <div key={index} className="flex gap-4">
-                <div className="text-gray-400 font-bold min-w-0 flex-shrink-0 w-8">
+                <div className={`font-bold min-w-0 flex-shrink-0 w-8 ${isDarkMode ? 'text-gray-400' : 'text-gray-600'}`}>
                   {item.quarter}
                 </div>
                 <div className="flex-1">
-                  <h3 className="text-white font-medium mb-2">{item.title}</h3>
-                  <p className="text-gray-400 text-sm">{item.description}</p>
+                  <h3 className={`font-medium mb-2 ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>{item.title}</h3>
+                  <p className={`text-sm ${isDarkMode ? 'text-gray-400' : 'text-gray-600'}`}>{item.description}</p>
                 </div>
                 <div>
                   <span className="text-blue-400 cursor-pointer text-lg">{item.link}</span>

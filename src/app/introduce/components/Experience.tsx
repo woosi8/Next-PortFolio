@@ -1,8 +1,10 @@
 "use client";
 
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
+import { useDarkMode } from "@/hooks/useDarkMode";
 
 const Experience = () => {
+  const { isDarkMode } = useDarkMode();
   const { ref, isVisible } = useScrollAnimation();
   const experiences = [
     {
@@ -45,7 +47,9 @@ const Experience = () => {
       <div className="max-w-6xl mx-auto">
         <div 
           ref={ref}
-          className={`bg-gray-900 rounded-lg p-8 transition-all duration-1000 ease-out ${
+          className={`rounded-lg p-8 transition-all duration-1000 ease-out ${
+            isDarkMode ? 'bg-gray-900' : 'bg-gray-100'
+          } ${
             isVisible 
               ? 'opacity-100 translate-y-0' 
               : 'opacity-0 translate-y-10'

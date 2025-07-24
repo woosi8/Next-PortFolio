@@ -1,8 +1,6 @@
 "use client";
 
-import { useAuth } from "@/hooks/useAuth";
-import { useRouter } from "next/navigation";
-import { useEffect } from "react";
+import { useDarkMode } from "@/hooks/useDarkMode";
 import Award from "./Award";
 import Certificate from "./Certificate";
 import Contact from "./Contact";
@@ -13,29 +11,14 @@ import Project from "./Project";
 import Skill from "./Skill";
 
 const IntroducePage = () => {
-  const { isLoggedIn, isLoading } = useAuth();
-  const router = useRouter();
-
-  useEffect(() => {
-    if (!isLoading && !isLoggedIn) {
-      router.push("/login");
-    }
-  }, [isLoggedIn, isLoading, router]);
-
-  if (isLoading) {
-    return (
-      <div className="min-h-screen flex items-center justify-center bg-black text-white">
-        <div className="text-lg">로딩중...</div>
-      </div>
-    );
-  }
-
-  if (!isLoggedIn) {
-    return null;
-  }
+  const { isDarkMode } = useDarkMode();
 
   return (
-    <div className="min-h-screen bg-black text-white relative">
+    <div className={`min-h-screen relative transition-colors duration-300 ${
+      isDarkMode 
+        ? 'bg-black text-white' 
+        : 'bg-white text-black'
+    }`}>
       <Header />
       <main>
         <Intro />
@@ -50,9 +33,13 @@ const IntroducePage = () => {
       {/* Scroll to top button - Fixed position */}
       <button 
         onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-        className="fixed bottom-6 right-6 w-12 h-12 bg-gray-800 rounded-full flex items-center justify-center hover:bg-gray-700 transition-colors z-50 shadow-lg"
+        className={`fixed bottom-6 right-6 w-12 h-12 rounded-full flex items-center justify-center transition-colors z-50 shadow-lg ${
+          isDarkMode 
+            ? 'bg-gray-800 hover:bg-gray-700 text-white' 
+            : 'bg-gray-200 hover:bg-gray-300 text-black'
+        }`}
       >
-        <span className="text-white text-lg">↑</span>
+        <span className="text-lg">↑</span>
       </button>
     </div>
   );
