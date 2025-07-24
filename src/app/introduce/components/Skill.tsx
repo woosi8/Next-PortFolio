@@ -1,4 +1,9 @@
+"use client";
+
+import { useScrollAnimation } from "@/hooks/useScrollAnimation";
+
 const Skill = () => {
+  const { ref, isVisible } = useScrollAnimation();
   const skillCategories = [
     {
       title: "🟨🔷 7 Experienced years",
@@ -21,7 +26,14 @@ const Skill = () => {
   return (
     <section id="skill" className="py-16 px-6">
       <div className="max-w-6xl mx-auto">
-        <div className="bg-gray-900 rounded-lg p-8">
+        <div 
+          ref={ref}
+          className={`bg-gray-900 rounded-lg p-8 transition-all duration-1000 ease-out ${
+            isVisible 
+              ? 'opacity-100 translate-y-0' 
+              : 'opacity-0 translate-y-10'
+          }`}
+        >
           <h2 className="text-2xl font-bold mb-6 text-blue-400">STACK</h2>
           <p className="text-gray-400 mb-8">
             여행한이여도 척원대엠소프트 스마호서비스를 좋습니다. 학위 영일하앗 스마솜, 넘은 영행서앗 척원의셨습니다.

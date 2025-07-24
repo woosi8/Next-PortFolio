@@ -1,4 +1,9 @@
+"use client";
+
+import { useScrollAnimation } from "@/hooks/useScrollAnimation";
+
 const Project = () => {
+  const { ref, isVisible } = useScrollAnimation();
   const projects = [
     {
       name: "오디오 플랫폼",
@@ -35,7 +40,14 @@ const Project = () => {
   return (
     <section id="project" className="py-16 px-6">
       <div className="max-w-6xl mx-auto">
-        <div className="bg-gray-900 rounded-lg p-8">
+        <div 
+          ref={ref}
+          className={`bg-gray-900 rounded-lg p-8 transition-all duration-1000 ease-out ${
+            isVisible 
+              ? 'opacity-100 translate-y-0' 
+              : 'opacity-0 translate-y-10'
+          }`}
+        >
           <h2 className="text-2xl font-bold mb-6 text-blue-400">PROJECT</h2>
           <p className="text-gray-400 mb-8">
             신기술 + 좋은 경기술을 통해 프로젝트를 만들어왔습니다.

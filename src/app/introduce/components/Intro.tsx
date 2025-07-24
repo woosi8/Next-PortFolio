@@ -1,7 +1,20 @@
+"use client";
+
+import { useScrollAnimation } from "@/hooks/useScrollAnimation";
+
 const Intro = () => {
+  const { ref, isVisible } = useScrollAnimation();
+  
   return (
     <section className="pt-24 pb-16 px-6">
-      <div className="max-w-7xl mx-auto">
+      <div 
+        ref={ref}
+        className={`max-w-7xl mx-auto transition-all duration-1000 ease-out ${
+          isVisible 
+            ? 'opacity-100 translate-y-0' 
+            : 'opacity-0 translate-y-10'
+        }`}
+      >
         <div className="flex flex-col lg:flex-row items-center justify-between">
           <div className="lg:w-1/2 mb-12 lg:mb-0">
             <div className="w-64 h-64 mx-auto lg:mx-0 mb-8">
@@ -16,7 +29,7 @@ const Intro = () => {
           <div className="lg:w-1/2 text-center lg:text-left">
             <h1 className="text-4xl lg:text-5xl font-bold mb-4">
               편리함을 추구하는 개발자,
-              <span className="text-blue-400 block">강경석</span>
+              <span className="text-blue-400 block">최 혁</span>
               입니다
             </h1>
             <p className="text-gray-400 text-lg mb-8">

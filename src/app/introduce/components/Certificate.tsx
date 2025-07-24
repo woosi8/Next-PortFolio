@@ -1,4 +1,11 @@
+"use client";
+
+import { useScrollAnimation } from "@/hooks/useScrollAnimation";
+
 const Certificate = () => {
+  const { ref: ref1, isVisible: isVisible1 } = useScrollAnimation();
+  const { ref: ref2, isVisible: isVisible2 } = useScrollAnimation();
+  const { ref: ref3, isVisible: isVisible3 } = useScrollAnimation();
   const certificates = [
     {
       name: "정보처리기사 & 산업기사",
@@ -76,7 +83,14 @@ const Certificate = () => {
       <div className="max-w-6xl mx-auto space-y-16">
         
         {/* Certificate Section */}
-        <div className="bg-gray-900 rounded-lg p-8">
+        <div 
+          ref={ref1}
+          className={`bg-gray-900 rounded-lg p-8 transition-all duration-1000 ease-out ${
+            isVisible1 
+              ? 'opacity-100 translate-y-0' 
+              : 'opacity-0 translate-y-10'
+          }`}
+        >
           <h2 className="text-2xl font-bold mb-6 text-blue-400">CERTIFICATE</h2>
           <p className="text-gray-400 mb-8">
             자서적어 실력의 탠둘기개 수 능를있습니다. 위험한 곤곻과 부화좋박예 대한 펙든을 늘 삷 인어 좋켰습니다.
@@ -111,7 +125,14 @@ const Certificate = () => {
         </div>
 
         {/* Retrospective Section */}
-        <div className="bg-gray-900 rounded-lg p-8">
+        <div 
+          ref={ref2}
+          className={`bg-gray-900 rounded-lg p-8 transition-all duration-1000 ease-out ${
+            isVisible2 
+              ? 'opacity-100 translate-y-0' 
+              : 'opacity-0 translate-y-10'
+          }`}
+        >
           <h2 className="text-2xl font-bold mb-6 text-blue-400">2023</h2>
           
           <div className="space-y-6">
@@ -133,7 +154,14 @@ const Certificate = () => {
         </div>
 
         {/* 2022 Retrospective Section */}
-        <div className="bg-gray-900 rounded-lg p-8">
+        <div 
+          ref={ref3}
+          className={`bg-gray-900 rounded-lg p-8 transition-all duration-1000 ease-out ${
+            isVisible3 
+              ? 'opacity-100 translate-y-0' 
+              : 'opacity-0 translate-y-10'
+          }`}
+        >
           <h2 className="text-2xl font-bold mb-6 text-blue-400">2022</h2>
           
           <div className="space-y-6">

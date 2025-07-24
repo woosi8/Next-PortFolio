@@ -1,4 +1,9 @@
+"use client";
+
+import { useScrollAnimation } from "@/hooks/useScrollAnimation";
+
 const Experience = () => {
+  const { ref, isVisible } = useScrollAnimation();
   const experiences = [
     {
       company: "가우디오랩",
@@ -38,7 +43,14 @@ const Experience = () => {
   return (
     <section id="experience" className="py-16 px-6">
       <div className="max-w-6xl mx-auto">
-        <div className="bg-gray-900 rounded-lg p-8">
+        <div 
+          ref={ref}
+          className={`bg-gray-900 rounded-lg p-8 transition-all duration-1000 ease-out ${
+            isVisible 
+              ? 'opacity-100 translate-y-0' 
+              : 'opacity-0 translate-y-10'
+          }`}
+        >
           <h2 className="text-2xl font-bold mb-6 text-blue-400">EXPERIENCE</h2>
           <p className="text-gray-400 mb-8">
             편리하고 가치있는 서비스를 개발하고, 체계적인 서비스를 만들고 있습니다.
