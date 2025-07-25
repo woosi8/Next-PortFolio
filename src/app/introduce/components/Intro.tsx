@@ -1,24 +1,22 @@
 "use client";
 
-import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import { useDarkMode } from "@/hooks/useDarkMode";
+import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 const Intro = () => {
   const { isDarkMode } = useDarkMode();
   const { ref, isVisible } = useScrollAnimation();
-  
+
   return (
     <section className="pt-24 pb-16 px-6">
-      <div 
+      <div
         ref={ref}
         className={`max-w-7xl mx-auto transition-all duration-1000 ease-out ${
-          isVisible 
-            ? 'opacity-100 translate-y-0' 
-            : 'opacity-0 translate-y-10'
+          isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
         }`}
       >
         <div className="flex flex-col lg:flex-row items-center justify-between">
-          <div className="lg:w-1/2 mb-12 lg:mb-0">
+          <div className=" mb-12 mr-20 ">
             <div className="w-64 h-64 mx-auto lg:mx-0 mb-8">
               <div className="w-full h-full bg-gradient-to-br from-blue-400 to-cyan-300 rounded-full flex items-center justify-center">
                 <div className="w-56 h-56 bg-white rounded-full flex items-center justify-center">
@@ -29,10 +27,9 @@ const Intro = () => {
           </div>
 
           <div className="lg:w-1/2 text-center lg:text-left">
-            <h1 className="text-4xl lg:text-5xl font-bold mb-4">
-              편리함을 추구하는 개발자,
-              <span className="text-blue-400 block">최 혁</span>
-              입니다
+            <h1 className="text-4xl lg:text-4xl font-bold mb-4">
+              귀찮음을 개발 동력으로 삼는 개발자, <br />
+              <span className="text-blue-400">최 혁</span> 입니다
             </h1>
             <p className="text-gray-400 text-lg mb-8">
               Web을 다루는 4년차 개발자 최 혁 입니다.
@@ -61,33 +58,36 @@ const Intro = () => {
           </div>
         </div>
 
-        <div className={`mt-16 rounded-lg p-8 transition-colors duration-300 ${
-          isDarkMode ? 'bg-gray-900' : 'bg-gray-100'
-        }`}>
+        <div
+          className={`mt-16 rounded-lg p-8 transition-colors duration-300 ${
+            isDarkMode ? "bg-gray-900" : "bg-gray-100"
+          }`}
+        >
           <h2 className="text-2xl font-bold mb-6 text-blue-400">INTRO</h2>
-          <div className={`space-y-4 transition-colors duration-300 ${
-            isDarkMode ? 'text-gray-300' : 'text-gray-700'
-          }`}>
-            <p>Web을 다루는 4년차 개발자 최 혁 입니다.</p>
-            <p>
-              가우디오랩에서 프론트엔드 리드로, 가우디오웹의 B2B, 또는 B2C,
-              그리고 내부들을 만들고 있습니다.
+          <div
+            className={`space-y-4 transition-colors duration-300 ${
+              isDarkMode ? "text-gray-300" : "text-gray-700"
+            }`}
+          >
+            <div>
+              Web 개발을 다루는 4년차 개발자입니다. 결과 중심적인 사고를
+              바탕으로 클라이언트의 요구를 명확하게 구현하는 것을 목표로 삼는
+              개발자 입니다. <br />
+            </div>
+            <div>
+              서비스 배타 부터 실제 서비스 운영하여 프론트앤드 개발을 담당한
+              경험이 있습니다. 리액트,넥스트를 주로 활용하여 웹 애플리케이션을
+              구축 해 왔습니다. <br />
+            </div>
+            <div>
+              Tailwind와 Scss를 사용해 디자이너의 요구를 빠르고 명확하게
+              구현하고, 디자인 시스템을 구축하여 유지보수를 용이하게
+              만들었습니다. <br /> 코드 품질과 성능 최적화, 재사용성에 주의를
+              기울이며, 업무를 효율적으로 수행하는 것을 가치로 삼고 있습니다.
               <br />
-              이전에는 솔루션을런티 서비스 기업을 창업하고, 티맥스
-              에이아이테크에서(티맥스소프트를) 만들었습니다.
-            </p>
-            <p>
-              현재는: 를, 여럼 넘어 캠핑도 같은 취미에서 휴식을 추구고 있습니다.
-              <br />
-              아래 위로 supabase, prisma 같은 서비스를 경험하심과 취미로 이번에
-              Elixir 패턴을 취종습니다.
-            </p>
-            <p>
-              사내의 개발자들과 프로젝트 집뜻 힘숨과, 지음첨허 사람 활용할 안쪽
-              인간을 까지 이장내게 됩니다.
-              <br />
-              그의 집에 좋은 보록 취하기는 것뿐 의식의 삶기 사업헸습니다.
-            </p>
+              협업을 통해 팀원들과 소통하며 문제를 해결하는 것을 중요시하며,
+              항상 성장하고 발전하기 위해 노력하고 있습니다.
+            </div>
           </div>
         </div>
       </div>
