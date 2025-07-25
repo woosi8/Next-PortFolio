@@ -32,7 +32,7 @@ const Intro = () => {
               <span className="text-blue-400">최 혁</span> 입니다
             </h1>
             <p className="text-gray-400 text-lg mb-8">
-              Web을 다루는 4년차 개발자 최 혁 입니다.
+              Web을 다루는 4년차 프론트 앤드 개발자 최 혁 입니다.
             </p>
           </div>
 
@@ -43,8 +43,12 @@ const Intro = () => {
               }`}
             >
               <div className="space-y-4">
-                {/* 기술이력서 */}
-                <div className="flex items-center justify-between">
+                <a
+                  href="https://rumbling-hook-1ff.notion.site/4-16c185919e2b80b2ad8fe3408ea1687b"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center justify-between cursor-pointer hover:opacity-80 transition-opacity rounded-lg p-2 -m-2"
+                >
                   <div className="flex items-center">
                     <div className="w-10 h-10 bg-blue-500 rounded-lg flex items-center justify-center mr-3">
                       <span className="text-white font-bold text-sm">📄</span>
@@ -66,10 +70,7 @@ const Intro = () => {
                       </p>
                     </div>
                   </div>
-                  <a
-                    href="https://rumbling-hook-1ff.notion.site/4-16c185919e2b80b2ad8fe3408ea1687b"
-                    target="_blank"
-                    rel="noopener noreferrer"
+                  <span
                     className={`text-xl hover:scale-110 transition-transform ${
                       isDarkMode
                         ? "text-blue-400 hover:text-blue-300"
@@ -77,14 +78,23 @@ const Intro = () => {
                     }`}
                   >
                     🔗
-                  </a>
-                </div>
+                  </span>
+                </a>
 
                 {/* 깃허브 */}
-                <div className="flex items-center justify-between">
+                <a
+                  href="https://github.com/woosi8"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center justify-between cursor-pointer hover:opacity-80 transition-opacity rounded-lg p-2 -m-2"
+                >
                   <div className="flex items-center">
-                    <div className="w-10 h-10 bg-gray-700 rounded-lg flex items-center justify-center mr-3">
-                      <span className="text-white font-bold text-sm">⚡</span>
+                    <div className="w-10 h-10 rounded-lg flex items-center justify-center mr-3">
+                      <img
+                        src="/icons/GitHub.svg"
+                        alt="GitHub"
+                        className="w-6 h-6"
+                      />
                     </div>
                     <div>
                       <p
@@ -103,10 +113,7 @@ const Intro = () => {
                       </p>
                     </div>
                   </div>
-                  <a
-                    href="https://github.com/woosi8"
-                    target="_blank"
-                    rel="noopener noreferrer"
+                  <span
                     className={`text-xl hover:scale-110 transition-transform ${
                       isDarkMode
                         ? "text-blue-400 hover:text-blue-300"
@@ -114,8 +121,8 @@ const Intro = () => {
                     }`}
                   >
                     🔗
-                  </a>
-                </div>
+                  </span>
+                </a>
               </div>
             </div>
           </div>

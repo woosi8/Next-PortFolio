@@ -166,7 +166,7 @@ const Project = () => {
                           rel="noopener noreferrer"
                           className="text-blue-400 cursor-pointer text-lg hover:text-blue-300 transition-colors mr-2"
                         >
-                          📄
+                          🔗
                         </a>
                       )}
                       {project.modalType && (
@@ -180,7 +180,7 @@ const Project = () => {
                           }}
                           className="text-blue-400 cursor-pointer text-lg hover:text-blue-300 transition-colors"
                         >
-                          ℹ️
+                          📄
                         </span>
                       )}
                     </td>
@@ -194,8 +194,7 @@ const Project = () => {
             <p
               className={`text-sm ${isDarkMode ? "text-gray-500" : "text-gray-400"}`}
             >
-              아직 못시의 프로젝트 목록 개인 개인만뜩을 초 규지개내용
-              출처하습니다.
+              이전 회사의 프로젝트 중 공개할 수 있는 프로젝트만 공유합니다.
             </p>
           </div>
         </div>
