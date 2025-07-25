@@ -10,6 +10,9 @@ const DarkModeProvider = ({ children }: { children: ReactNode }) => {
     const stored = localStorage.getItem('darkMode');
     if (stored !== null) {
       setIsDarkMode(stored === 'true');
+    } else {
+      // localStorage에 값이 없으면 기본값(다크모드)을 저장
+      localStorage.setItem('darkMode', 'true');
     }
   }, []);
 

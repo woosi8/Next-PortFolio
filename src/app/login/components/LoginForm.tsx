@@ -1,6 +1,8 @@
+import { useEffect, useRef } from "react";
 import LoginContainer from "../LoginContainer";
 
 const LoginForm = () => {
+  const emailInputRef = useRef<HTMLInputElement>(null);
   const {
     email,
     password,
@@ -8,6 +10,10 @@ const LoginForm = () => {
     handleEmailChange,
     handlePasswordChange,
   } = LoginContainer.useContainer();
+
+  useEffect(() => {
+    emailInputRef.current?.focus();
+  }, []);
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-50">
@@ -21,6 +27,7 @@ const LoginForm = () => {
           <div className="rounded-md shadow-sm -space-y-px">
             <div>
               <input
+                ref={emailInputRef}
                 type="text"
                 className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10"
                 placeholder="아이디"
