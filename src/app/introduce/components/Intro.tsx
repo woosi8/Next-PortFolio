@@ -37,22 +37,85 @@ const Intro = () => {
           </div>
 
           <div className="lg:w-1/3">
-            <div className="bg-gray-800 rounded-lg p-6 mb-6">
-              <div className="flex items-center mb-4">
-                <div className="w-12 h-12 bg-blue-500 rounded-lg flex items-center justify-center mr-4">
-                  <span className="text-white font-bold">TS</span>
+            <div
+              className={`rounded-lg p-6 mb-6 ${
+                isDarkMode ? "bg-gray-800" : "bg-gray-100"
+              }`}
+            >
+              <div className="space-y-4">
+                {/* 기술이력서 */}
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center">
+                    <div className="w-10 h-10 bg-blue-500 rounded-lg flex items-center justify-center mr-3">
+                      <span className="text-white font-bold text-sm">📄</span>
+                    </div>
+                    <div>
+                      <p
+                        className={`text-sm font-medium ${
+                          isDarkMode ? "text-white" : "text-gray-900"
+                        }`}
+                      >
+                        기술이력서
+                      </p>
+                      <p
+                        className={`text-xs ${
+                          isDarkMode ? "text-gray-400" : "text-gray-600"
+                        }`}
+                      >
+                        Tech Resume
+                      </p>
+                    </div>
+                  </div>
+                  <a
+                    href="https://rumbling-hook-1ff.notion.site/4-16c185919e2b80b2ad8fe3408ea1687b"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={`text-xl hover:scale-110 transition-transform ${
+                      isDarkMode
+                        ? "text-blue-400 hover:text-blue-300"
+                        : "text-blue-600 hover:text-blue-500"
+                    }`}
+                  >
+                    🔗
+                  </a>
                 </div>
-                <div>
-                  <p className="text-sm text-gray-400">
-                    가전 &gt; 티맥스 &gt; 가우디오랩
-                  </p>
-                  <p className="text-blue-400 text-sm">세직충</p>
+
+                {/* 깃허브 */}
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center">
+                    <div className="w-10 h-10 bg-gray-700 rounded-lg flex items-center justify-center mr-3">
+                      <span className="text-white font-bold text-sm">⚡</span>
+                    </div>
+                    <div>
+                      <p
+                        className={`text-sm font-medium ${
+                          isDarkMode ? "text-white" : "text-gray-900"
+                        }`}
+                      >
+                        깃허브
+                      </p>
+                      <p
+                        className={`text-xs ${
+                          isDarkMode ? "text-gray-400" : "text-gray-600"
+                        }`}
+                      >
+                        GitHub Profile
+                      </p>
+                    </div>
+                  </div>
+                  <a
+                    href="https://github.com/woosi8"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={`text-xl hover:scale-110 transition-transform ${
+                      isDarkMode
+                        ? "text-blue-400 hover:text-blue-300"
+                        : "text-blue-600 hover:text-blue-500"
+                    }`}
+                  >
+                    🔗
+                  </a>
                 </div>
-              </div>
-              <div className="text-sm text-gray-400">
-                편리함을 추구하는 핸디의 지식 블로그
-                <br />
-                @Dev-blog 60만조회수 글(3807개)
               </div>
             </div>
           </div>

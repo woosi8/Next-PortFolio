@@ -2,10 +2,15 @@
 
 import { useDarkMode } from "@/hooks/useDarkMode";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
+import { useState } from "react";
+import LawsDaqModal from "./LawsDaqModal";
+import LetituModal from "./LetituModal";
 
 const Project = () => {
   const { isDarkMode } = useDarkMode();
   const { ref, isVisible } = useScrollAnimation();
+  const [isLetituModalOpen, setIsLetituModalOpen] = useState(false);
+  const [isLawsDaqModalOpen, setIsLawsDaqModalOpen] = useState(false);
   const projects = [
     {
       name: "LETITU",
@@ -19,7 +24,7 @@ const Project = () => {
         { name: "AWS", icon: "/icons/AWS.svg" },
         { name: "NEST", icon: "/icons/Nest.js.svg" },
       ],
-      // link: "📄",
+      modalType: "letitu",
     },
     {
       name: "LAWSDAQ",
@@ -32,7 +37,7 @@ const Project = () => {
         { name: "Tailwind CSS", icon: "/icons/Tailwind CSS.svg" },
         { name: "GitHub", icon: "/icons/GitHub.svg" },
       ],
-      // link: "📄",
+      modalType: "lawsdaq",
     },
     {
       name: "리액트 포트폴리오 프로젝트",
@@ -154,18 +159,28 @@ const Project = () => {
                       </div>
                     </td>
                     <td className="py-6 px-4">
-                      {project.link ? (
+                      {project.link && (
                         <a
                           href={project.link}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="text-blue-400 cursor-pointer text-lg hover:text-blue-300 transition-colors"
+                          className="text-blue-400 cursor-pointer text-lg hover:text-blue-300 transition-colors mr-2"
                         >
                           📄
                         </a>
-                      ) : (
-                        <span className="text-gray-500 cursor-not-allowed text-lg">
-                          📄
+                      )}
+                      {project.modalType && (
+                        <span
+                          onClick={() => {
+                            if (project.modalType === "letitu") {
+                              setIsLetituModalOpen(true);
+                            } else if (project.modalType === "lawsdaq") {
+                              setIsLawsDaqModalOpen(true);
+                            }
+                          }}
+                          className="text-blue-400 cursor-pointer text-lg hover:text-blue-300 transition-colors"
+                        >
+                          ℹ️
                         </span>
                       )}
                     </td>
@@ -185,6 +200,15 @@ const Project = () => {
           </div>
         </div>
       </div>
+
+      <LetituModal
+        isOpen={isLetituModalOpen}
+        onClose={() => setIsLetituModalOpen(false)}
+      />
+      <LawsDaqModal
+        isOpen={isLawsDaqModalOpen}
+        onClose={() => setIsLawsDaqModalOpen(false)}
+      />
     </section>
   );
 };
