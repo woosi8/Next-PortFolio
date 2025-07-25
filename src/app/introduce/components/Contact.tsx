@@ -1,7 +1,7 @@
 "use client";
 
-import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import { useDarkMode } from "@/hooks/useDarkMode";
+import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 const Contact = () => {
   const { isDarkMode } = useDarkMode();
@@ -12,7 +12,7 @@ const Contact = () => {
         <div
           ref={ref}
           className={`rounded-lg p-8 transition-all duration-1000 ease-out ${
-            isDarkMode ? 'bg-gray-900' : 'bg-gray-100'
+            isDarkMode ? "bg-gray-900" : "bg-gray-100"
           } ${
             isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
           }`}
@@ -20,35 +20,41 @@ const Contact = () => {
           <h2 className="text-2xl font-bold mb-6 text-blue-400">CONTACT</h2>
 
           <div className="flex justify-center">
-            <div className={`rounded-lg p-8 max-w-md w-full text-center ${
-              isDarkMode ? 'bg-gray-800' : 'bg-white'
-            }`}>
-              <h3 className={`text-2xl font-bold mb-2 ${
-                isDarkMode ? 'text-white' : 'text-black'
-              }`}>CHOI HYUCK</h3>
-              <p className={`font-medium mb-1 ${
-                isDarkMode ? 'text-gray-300' : 'text-gray-600'
-              }`}>
-                FRONTEND DEVELOPER
-              </p>
+            <div
+              className={`rounded-lg p-8 max-w-md w-full text-center ${
+                isDarkMode ? "bg-gray-800" : "bg-white"
+              }`}
+            >
+              <h3
+                className={`text-2xl font-bold mb-2 ${
+                  isDarkMode ? "text-white" : "text-black"
+                }`}
+              >
+                CHOI HYUCK
+              </h3>
+
               <div className="w-12 h-0.5 bg-blue-500 mx-auto mb-6"></div>
 
-              <div className={`space-y-2 text-sm mb-6 ${
-                isDarkMode ? 'text-gray-200' : 'text-black'
-              }`}>
+              <div
+                className={`space-y-2 text-sm mb-6 ${
+                  isDarkMode ? "text-gray-200" : "text-black"
+                }`}
+              >
                 <p>
-                  <span className="font-medium">Position |</span> Developer,
-                  Researcher
+                  <span className="font-medium">Position |</span> FrontEnd
+                  Developer
                 </p>
                 <p>
                   <span className="font-medium">Email |</span>{" "}
-                  handy.kang.dev@gmail.com
+                  tmfvmehek@gmail.com
                 </p>
               </div>
 
-              <p className={`text-sm mb-6 ${
-                isDarkMode ? 'text-gray-400' : 'text-gray-600'
-              }`}>
+              <p
+                className={`text-sm mb-6 ${
+                  isDarkMode ? "text-gray-400" : "text-gray-600"
+                }`}
+              >
                 유저에게 편리함을 주는 서비스를 만드는 개발자
               </p>
 

@@ -3,14 +3,13 @@
 import { DarkModeProvider } from "@/common/DarkModeProvider";
 import { useDarkMode } from "@/hooks/useDarkMode";
 import IntroduceContainer from "../IntroduceContainer";
-import Certificate from "./Certificate";
+import About from "./About";
 import Contact from "./Contact";
 import Experience from "./Experience";
 import Header from "./Header";
 import Intro from "./Intro";
-import MyWork from "./MyWork";
 import Project from "./Project";
-import Skill from "./Skill";
+import Stack from "./Stack";
 
 const Introduce = () => {
   const { isDarkMode } = useDarkMode();
@@ -39,9 +38,8 @@ const Introduce = () => {
         <Intro />
         <Experience />
         <Project />
-        <Skill />
-        <MyWork />
-        <Certificate />
+        <Stack />
+        <About />
         <Contact />
       </main>
 

@@ -3,47 +3,29 @@
 import { useDarkMode } from "@/hooks/useDarkMode";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
-const MyWork = () => {
+const About = () => {
   const { isDarkMode } = useDarkMode();
   const { ref, isVisible } = useScrollAnimation();
   const awards = [
     {
-      year: "2023년",
-      title: "가우디오랩 - PIETTIC 중 Integrity 수상",
-      description: "L 신뢰 높은 협업, 높은 수준의 업무처리로 인한 수상 🏆",
-      icon: "🏆",
+      year: "2017 ~ 2019",
+      title: "2년간의 해외 생활",
+      description: `K-move 스쿨 프로그램을 통해 베트남 현지 여행사에서 약 2년간 근무하며 해외 생활을 경험했습니다. 
+      이 과정에서 글로벌 환경에서 통용될 수 있는 전문 기술의 필요성을 깨달았고, 어디서든 활용될 수 있는 개발자라는 직업에 관심을 갖게 되었습니다.
+개발 학습을 시작한 지 1년간은 온라인 강의와 독학을 통해 기초를 다졌습니다. 초기에는 퍼블리싱에 집중하여 HTML, CSS를 중점적으로 학습했으나,
+점차 동적인 기능 구현에 대한 흥미가 생겨 프론트엔드 개발자를 목표로 준비해 왔습니다.
+이후 CS 기초 지식, JavaScript, React 등을 체계적으로 학습하며 프론트엔드 개발 역량을 쌓아왔습니다.
+`,
     },
     {
-      year: "2021년",
-      title: "티맥스 표창장 - 우수사원상",
+      year: "2017",
+      title: "경기대 관광경영 학과 학사 졸업",
       description: "L 티맥스사내의 좋좋은, 출가 플랫폼 관련 업적성 인한 수상",
-      icon: "🏆",
-    },
-    {
-      year: "2019년",
-      title: "우리온라인 온택트 콘텐츠 - 우수상",
-      description:
-        "L IDR 좋바의 크롤링의 오점 + 서울 이용한 챗덱의 프로젝트로 성장, 추천 서비스",
-      icon: "🏆",
-    },
-    {
-      year: "2019년",
-      title:
-        "원보 스타트업 어업스, 강기노 대학생 좋은 창업서비회 콘텐츠, 출석(팀워크여성 창업경진대회,스마트시티 창선 지 + 다양, 응도솀, 다항, 취약수각 외",
-      description: "L (기하 좋아 모빙이의 좋흔",
-      icon: "🏆",
-    },
-    {
-      year: "2018년",
-      title: "한국출산학회 학술좋정에기출처 - 우수논문",
-      description:
-        "L [UC-LAB] GAN로긴 DNN로을 활용한 ANOMALY DETECTION에 관한 연구 🏆",
-      icon: "🏆",
     },
   ];
 
   return (
-    <section id="MyWork" className="py-16 px-6">
+    <section id="about" className="py-16 px-6">
       <div className="max-w-6xl mx-auto">
         <div
           ref={ref}
@@ -53,19 +35,21 @@ const MyWork = () => {
             isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
           }`}
         >
-          <h2 className="text-2xl font-bold mb-6 text-blue-400">AWARD</h2>
+          <h2 className="text-2xl font-bold mb-6 text-blue-400">
+            개발 이외 경력
+          </h2>
           <p
             className={`mb-8 ${isDarkMode ? "text-gray-400" : "text-gray-600"}`}
           >
-            담핑고 있던 서비스를 킴득하거 히력, 주안한 부딪 영어외 좋촉고 있젓릅
-            셔롭특별 다나띄니다.
+            해외 생활을 경험하면서 다양한 시각과 사고력을 넓힌 사람이
+            되었습니다.
           </p>
 
           <div className="space-y-8">
             {awards.map((award, index) => (
               <div key={index} className="flex items-start gap-6">
                 <div
-                  className={`font-medium min-w-0 flex-shrink-0 ${
+                  className={`font-medium min-w-25 flex-shrink-0 ${
                     isDarkMode ? "text-gray-400" : "text-gray-600"
                   }`}
                 >
@@ -74,7 +58,6 @@ const MyWork = () => {
 
                 <div className="flex-1">
                   <div className="flex items-start gap-4">
-                    <div className="text-2xl">{award.icon}</div>
                     <div>
                       <h3
                         className={`font-medium mb-2 ${
@@ -84,7 +67,7 @@ const MyWork = () => {
                         {award.title}
                       </h3>
                       <p
-                        className={`text-sm ${
+                        className={`text-sm whitespace-pre-line ${
                           isDarkMode ? "text-gray-400" : "text-gray-600"
                         }`}
                       >
@@ -102,4 +85,4 @@ const MyWork = () => {
   );
 };
 
-export default MyWork;
+export default About;

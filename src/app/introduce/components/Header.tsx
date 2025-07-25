@@ -2,6 +2,7 @@
 
 import { useAuth } from "@/hooks/useAuth";
 import { useDarkMode } from "@/hooks/useDarkMode";
+import { useActiveSection } from "@/hooks/useActiveSection";
 import { useRouter } from "next/navigation";
 
 const Header = () => {
@@ -9,19 +10,20 @@ const Header = () => {
   const router = useRouter();
   const { isDarkMode, toggleDarkMode } = useDarkMode();
 
+  const menuItems = [
+    { id: "experience", label: "Experience" },
+    { id: "project", label: "Project" },
+    { id: "stack", label: "Stack" },
+    { id: "about", label: "About Me" },
+    { id: "contact", label: "Contact" },
+  ];
+
+  const activeSection = useActiveSection(menuItems.map(item => item.id));
+
   const handleLogout = () => {
     logout();
     router.push("/login");
   };
-
-  const menuItems = [
-    { id: "experience", label: "Experience" },
-    { id: "project", label: "Project" },
-    { id: "skill", label: "Skill" },
-    { id: "MyWork", label: "My Work" },
-    { id: "certificate", label: "Certificate" },
-    { id: "contact", label: "Contact" },
-  ];
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 backdrop-blur-sm transition-colors duration-300 ${
@@ -39,23 +41,28 @@ const Header = () => {
           </div>
 
           <div className="hidden md:flex items-center space-x-8">
-            {menuItems.map((item) => (
-              <a
-                key={item.id}
-                href={`#${item.id}`}
-                className={`hover:text-blue-400 transition-colors cursor-pointer ${
-                  isDarkMode ? "text-white" : "text-black"
-                }`}
-                onClick={(e) => {
-                  e.preventDefault();
-                  document
-                    .getElementById(item.id)
-                    ?.scrollIntoView({ behavior: "smooth" });
-                }}
-              >
-                {item.label}
-              </a>
-            ))}
+            {menuItems.map((item) => {
+              const isActive = activeSection === item.id;
+              return (
+                <a
+                  key={item.id}
+                  href={`#${item.id}`}
+                  className={`hover:text-blue-400 transition-colors cursor-pointer ${
+                    isActive 
+                      ? "text-blue-400" 
+                      : (isDarkMode ? "text-white" : "text-black")
+                  }`}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    document
+                      .getElementById(item.id)
+                      ?.scrollIntoView({ behavior: "smooth" });
+                  }}
+                >
+                  {item.label}
+                </a>
+              );
+            })}
           </div>
 
           <div className="flex items-center space-x-4">
