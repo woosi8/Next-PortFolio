@@ -1,9 +1,9 @@
 "use client";
 
-import IntroduceContainer from "./IntroduceContainer";
+import IntroducePage from "./components/IntroducePage";
 
 const PageIntroduce = () => {
-  return <IntroduceContainer />;
+  return <IntroducePage />;
 };
 
 export default PageIntroduce;

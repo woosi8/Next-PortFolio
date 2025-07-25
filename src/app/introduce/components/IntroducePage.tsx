@@ -1,6 +1,8 @@
 "use client";
 
+import { DarkModeProvider } from "@/common/DarkModeProvider";
 import { useDarkMode } from "@/hooks/useDarkMode";
+import IntroduceContainer from "../IntroduceContainer";
 import Award from "./Award";
 import Certificate from "./Certificate";
 import Contact from "./Contact";
@@ -10,8 +12,21 @@ import Intro from "./Intro";
 import Project from "./Project";
 import Skill from "./Skill";
 
-const IntroducePage = () => {
+const Introduce = () => {
   const { isDarkMode } = useDarkMode();
+  const { isLoggedIn, isLoading } = IntroduceContainer.useContainer();
+
+  if (isLoading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-black text-white">
+        <div className="text-lg">로딩중...</div>
+      </div>
+    );
+  }
+
+  if (!isLoggedIn) {
+    return null;
+  }
 
   return (
     <div className={`min-h-screen relative transition-colors duration-300 ${
@@ -42,6 +57,16 @@ const IntroducePage = () => {
         <span className="text-lg">↑</span>
       </button>
     </div>
+  );
+};
+
+const IntroducePage = () => {
+  return (
+    <DarkModeProvider>
+      <IntroduceContainer.Provider>
+        <Introduce />
+      </IntroduceContainer.Provider>
+    </DarkModeProvider>
   );
 };
 

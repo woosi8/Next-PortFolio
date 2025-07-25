@@ -1,12 +1,11 @@
 "use client";
 
-import { DarkModeProvider } from "@/common/DarkModeProvider";
 import { useAuth } from "@/hooks/useAuth";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
-import IntroducePage from "./components/IntroducePage";
+import { createContainer } from "unstated-next";
 
-const IntroduceContainer = () => {
+const IntroduceContainer = createContainer(() => {
   const { isLoggedIn, isLoading } = useAuth();
   const router = useRouter();
 
@@ -16,23 +15,10 @@ const IntroduceContainer = () => {
     }
   }, [isLoggedIn, isLoading, router]);
 
-  if (isLoading) {
-    return (
-      <div className="min-h-screen flex items-center justify-center bg-black text-white">
-        <div className="text-lg">로딩중...</div>
-      </div>
-    );
-  }
-
-  if (!isLoggedIn) {
-    return null;
-  }
-
-  return (
-    <DarkModeProvider>
-      <IntroducePage />
-    </DarkModeProvider>
-  );
-};
+  return {
+    isLoggedIn,
+    isLoading,
+  };
+});
 
 export default IntroduceContainer;
