@@ -23,6 +23,11 @@ const LoginForm = () => {
             로그인
           </h2>
         </div>
+        <div>
+          <p className="mt-2 text-center text-sm text-gray-600">
+            아이디: qwer, 비밀번호: 9999
+          </p>
+        </div>
         <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
           <div className="rounded-md shadow-sm -space-y-px">
             <div>

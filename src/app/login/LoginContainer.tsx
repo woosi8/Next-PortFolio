@@ -12,8 +12,6 @@ const LoginContainer = createContainer(() => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     
-    console.log("입력된 아이디:", email);
-    console.log("입력된 비밀번호:", password);
 
     if (email === "qwer" && password === "9999") {
       localStorage.setItem("isLoggedIn", "true");
