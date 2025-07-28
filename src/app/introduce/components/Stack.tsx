@@ -39,12 +39,14 @@ const Stack = () => {
     },
     {
       title: "1 Experienced years",
-      description: "데브옵스",
+      description:
+        "AWS Amplify를 통해 AWS CLoudFront CDN에 Next.js 프론트 웹사이트를 배포 운영,국제/국내 버전 분리를 통해 버전 관리에 따른 도메인 분리에 대한 기술 경험",
       skills: [{ name: "AWS", icon: "/icons/AWS.svg" }],
     },
     {
       title: "1 Experienced year",
-      description: "백엔드, 상태관리, 협업툴 및 클라우드 서비스",
+      description:
+        "NestJS 기반의 API를 직접 설계하고 구현, 기본적인 엔드포인트 외에도 TypeORM을 활용해 테이블 간 관계 설정 및 조인 쿼리 작성 등을 수행하며 프론트엔드 요구사항에 맞는 응답 구조를 구성",
       skills: [{ name: "Nest.js", icon: "/icons/Nest.js.svg" }],
     },
   ];
