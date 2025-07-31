@@ -32,7 +32,7 @@ yarn build
 ## 환경 변수
 
 ```bash
-# API 설정
+# Email JS 설정
 NEXT_PUBLIC_EMAILJS_SERVICE_ID=""           # EmailJS 서비스 아이디
 NEXT_PUBLIC_EMAILJS_TEMPLATE_ID=""          # EmailJS 템플릿 아이디
 NEXT_PUBLIC_EMAILJS_PUBLIC_KEY=""           # EmailJS 퍼블릭 키
