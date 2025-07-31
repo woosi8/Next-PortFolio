@@ -33,14 +33,10 @@ yarn build
 
 ```bash
 # API 설정
-NEXT_PUBLIC_API_DOMAIN=""           # API 서버 도메인
+NEXT_PUBLIC_EMAILJS_SERVICE_ID=""           # EmailJS 서비스 아이디
+NEXT_PUBLIC_EMAILJS_TEMPLATE_ID=""          # EmailJS 템플릿 아이디
+NEXT_PUBLIC_EMAILJS_PUBLIC_KEY=""           # EmailJS 퍼블릭 키
 
-# 환경 설정 (qa, dev, production)
-NEXT_PUBLIC_ENV=""                  # 현재 환경
-
-# 개발 도구
-NEXT_PUBLIC_TOLGEE_API_KEY=""       # Tolgee 국제화 API 키
-NEXT_PUBLIC_TOLGEE_API_URL=""       # Tolgee API URL
 ```
 ## 빌드 및 배포
 
