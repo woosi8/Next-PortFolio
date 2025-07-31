@@ -2,10 +2,13 @@
 
 import { useDarkMode } from "@/hooks/useDarkMode";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
+import { useState } from "react";
+import ContactEmailModal from "./ContactEmailModal";
 
 const Contact = () => {
   const { isDarkMode } = useDarkMode();
   const { ref, isVisible } = useScrollAnimation();
+  const [isEmailModalOpen, setIsEmailModalOpen] = useState(false);
   return (
     <section id="contact" className="py-16 px-6">
       <div className="max-w-6xl mx-auto">
@@ -59,20 +62,30 @@ const Contact = () => {
               </p>
 
               <div className="flex justify-center gap-4">
-                <div className="w-10 h-10 bg-red-500 rounded-lg flex items-center justify-center">
-                  <span className="text-white text-lg">📧</span>
+                <div className=" h-10 bg-red-500 rounded-lg flex items-center justify-center">
+                  <button 
+                    className="p-10 text-white text-lg cursor-pointer"
+                    onClick={() => setIsEmailModalOpen(true)}
+                  >
+                    📧 email 문의
+                  </button>
                 </div>
-                <div className="w-10 h-10 bg-blue-600 rounded-lg flex items-center justify-center">
+                {/* <div className="w-10 h-10 bg-blue-600 rounded-lg flex items-center justify-center">
                   <span className="text-white text-lg">💼</span>
                 </div>
                 <div className="w-10 h-10 bg-yellow-500 rounded-lg flex items-center justify-center">
                   <span className="text-white text-lg">💬</span>
-                </div>
+                </div> */}
               </div>
             </div>
           </div>
         </div>
       </div>
+      
+      <ContactEmailModal
+        isOpen={isEmailModalOpen}
+        onClose={() => setIsEmailModalOpen(false)}
+      />
     </section>
   );
 };
