@@ -1,7 +1,8 @@
 "use client";
 
 import { useDarkMode } from "@/hooks/useDarkMode";
-import { useState } from "react";
+import emailjs from "@emailjs/browser";
+import { useRef, useState } from "react";
 
 interface ContactEmailModalProps {
   isOpen: boolean;
@@ -10,10 +11,11 @@ interface ContactEmailModalProps {
 
 const ContactEmailModal = ({ isOpen, onClose }: ContactEmailModalProps) => {
   const { isDarkMode } = useDarkMode();
+  const formRef = useRef<HTMLFormElement>(null);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
-    subject: "",
+    title: "",
     message: "",
   });
 
@@ -31,16 +33,34 @@ const ContactEmailModal = ({ isOpen, onClose }: ContactEmailModalProps) => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // 이메일 전송 로직 구현
-    console.log("Form submitted:", formData);
-    // 폼 초기화
-    setFormData({
-      name: "",
-      email: "",
-      subject: "",
-      message: "",
-    });
-    onClose();
+
+    if (!formRef.current) return;
+
+    emailjs
+      .sendForm(
+        process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID!,
+        process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID!,
+        formRef.current,
+        {
+          publicKey: process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY!,
+        }
+      )
+      .then(
+        () => {
+          console.log("SUCCESS!");
+          // 폼 초기화
+          setFormData({
+            name: "",
+            email: "",
+            title: "",
+            message: "",
+          });
+          onClose();
+        },
+        (error) => {
+          console.log("FAILED...", error.text);
+        }
+      );
   };
 
   return (
@@ -63,11 +83,7 @@ const ContactEmailModal = ({ isOpen, onClose }: ContactEmailModalProps) => {
             >
               📧 이메일 문의
             </h1>
-            <p
-              className={`${
-                isDarkMode ? "text-gray-300" : "text-gray-600"
-              }`}
-            >
+            <p className={`${isDarkMode ? "text-gray-300" : "text-gray-600"}`}>
               언제든지 연락주세요!
             </p>
           </div>
@@ -83,7 +99,7 @@ const ContactEmailModal = ({ isOpen, onClose }: ContactEmailModalProps) => {
           </button>
         </div>
 
-        <form onSubmit={handleSubmit} className="space-y-4">
+        <form ref={formRef} onSubmit={handleSubmit} className="space-y-4">
           <div>
             <label
               htmlFor="name"
@@ -136,7 +152,7 @@ const ContactEmailModal = ({ isOpen, onClose }: ContactEmailModalProps) => {
 
           <div>
             <label
-              htmlFor="subject"
+              htmlFor="title"
               className={`block text-sm font-medium mb-2 ${
                 isDarkMode ? "text-white" : "text-black"
               }`}
@@ -145,9 +161,9 @@ const ContactEmailModal = ({ isOpen, onClose }: ContactEmailModalProps) => {
             </label>
             <input
               type="text"
-              id="subject"
-              name="subject"
-              value={formData.subject}
+              id="title"
+              name="title"
+              value={formData.title}
               onChange={handleInputChange}
               required
               className={`w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 ${
