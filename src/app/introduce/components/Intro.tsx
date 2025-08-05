@@ -20,7 +20,14 @@ const Intro = () => {
             <div className="w-64 h-64 mx-auto lg:mx-0 mb-8">
               <div className="w-full h-full bg-gradient-to-br from-blue-400 to-cyan-300 rounded-full flex items-center justify-center">
                 <div className="w-56 h-56 bg-white rounded-full flex items-center justify-center">
-                  <div className="text-6xl">👨‍💻</div>
+                  {/* <div className="text-6xl">👨‍💻</div> */}
+                  <img
+                    className="w-full h-full object-cover rounded-full"
+                    src="/img/profile_huey.png"
+                    style={{
+                      objectPosition: "50% 6%",
+                    }}
+                  />
                 </div>
               </div>
             </div>
