@@ -35,7 +35,7 @@ const Intro = () => {
 
           <div className="lg:w-1/2 text-center lg:text-left">
             <h1 className="text-4xl lg:text-4xl font-bold mb-4">
-              귀찮음을 개발 동력으로 삼는 개발자, <br />
+              비효율을 줄이는 데 집착하는 개발자, <br />
               <span className="text-blue-400">최 혁</span> 입니다
             </h1>
             <p className="text-gray-400 text-lg mb-8">
