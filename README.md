@@ -10,7 +10,7 @@ Claude AI 바이브 코딩으로 구성하였습니다.
 
 - **Frontend**: Next.js 15 (App Router), React 19, TypeScript
 - **Styling**: Tailwind CSS, PostCSS
-- **기타**: emailjs
+- **기타**: emailjs (실제로 사용 가능 *달 200건 무료)
 
 ## Getting Started
 
