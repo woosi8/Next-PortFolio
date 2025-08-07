@@ -2,7 +2,7 @@
 
 import { useDarkMode } from "@/hooks/useDarkMode";
 import emailjs from "@emailjs/browser";
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 
 interface ContactEmailModalProps {
   isOpen: boolean;
@@ -12,12 +12,19 @@ interface ContactEmailModalProps {
 const ContactEmailModal = ({ isOpen, onClose }: ContactEmailModalProps) => {
   const { isDarkMode } = useDarkMode();
   const formRef = useRef<HTMLFormElement>(null);
+  const nameInputRef = useRef<HTMLInputElement>(null);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     title: "",
     message: "",
   });
+
+  useEffect(() => {
+    if (isOpen && nameInputRef.current) {
+      nameInputRef.current.focus();
+    }
+  }, [isOpen]);
 
   if (!isOpen) return null;
 
@@ -110,6 +117,7 @@ const ContactEmailModal = ({ isOpen, onClose }: ContactEmailModalProps) => {
               이름
             </label>
             <input
+              ref={nameInputRef}
               type="text"
               id="name"
               name="name"

@@ -13,19 +13,6 @@ import Stack from "./Stack";
 
 const Introduce = () => {
   const { isDarkMode } = useDarkMode();
-  const { isLoggedIn, isLoading } = IntroduceContainer.useContainer();
-
-  if (isLoading) {
-    return (
-      <div className="min-h-screen flex items-center justify-center bg-black text-white">
-        <div className="text-lg">로딩중...</div>
-      </div>
-    );
-  }
-
-  if (!isLoggedIn) {
-    return null;
-  }
 
   return (
     <div
