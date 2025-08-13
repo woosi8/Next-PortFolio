@@ -4,6 +4,7 @@ import { useDarkMode } from "@/hooks/useDarkMode";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import { useState } from "react";
 import ContactEmailModal from "./ContactEmailModal";
+import KakaoMap from "./KakaoMap";
 
 const Contact = () => {
   const { isDarkMode } = useDarkMode();
@@ -22,7 +23,7 @@ const Contact = () => {
         >
           <h2 className="text-2xl font-bold mb-6 text-blue-400">CONTACT</h2>
 
-          <div className="flex justify-center">
+          <div className="flex flex-col lg:flex-row gap-8 items-start">
             <div
               className={`rounded-lg p-8 max-w-md w-full text-center ${
                 isDarkMode ? "bg-gray-800" : "bg-white"
@@ -77,6 +78,10 @@ const Contact = () => {
                   <span className="text-white text-lg">💬</span>
                 </div> */}
               </div>
+            </div>
+            
+            <div className="flex-1 min-w-0">
+              <KakaoMap className="w-full" />
             </div>
           </div>
         </div>
