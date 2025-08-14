@@ -11,12 +11,10 @@ import { useState } from "react";
 const InterviewSections = () => {
   const { isDarkMode } = useDarkMode();
   const { ref, isVisible } = useScrollAnimation();
-  const [expandedSections, setExpandedSections] = useState<number[]>([]);
+  const [expandedSection, setExpandedSection] = useState<number | null>(null);
 
   const toggleSection = (index: number) => {
-    setExpandedSections((prev) =>
-      prev.includes(index) ? prev.filter((i) => i !== index) : [...prev, index]
-    );
+    setExpandedSection(prev => prev === index ? null : index);
   };
 
   const interviewSections: InterviewSection[] =
@@ -45,7 +43,7 @@ const InterviewSections = () => {
 
           <div className="space-y-2">
             {interviewSections.map((section, index) => {
-              const isExpanded = expandedSections.includes(index);
+              const isExpanded = expandedSection === index;
               return (
                 <div
                   key={section.id}
