@@ -4,6 +4,7 @@ import Header from "@/app/introduce/components/Header";
 import { DarkModeProvider } from "@/common/DarkModeProvider";
 import { useDarkMode } from "@/hooks/useDarkMode";
 import InterviewContainer from "../InterviewContainer";
+import InterviewSections from "./InterviewSections";
 
 const Interview = () => {
   const { isDarkMode } = useDarkMode();
@@ -16,17 +17,20 @@ const Interview = () => {
     >
       <Header />
       <main>
-        {/* Interview 페이지 내용이 들어갈 자리 */}
-        <section className="pt-20 min-h-screen flex items-center justify-center">
+        {/* Interview 페이지 헤더 섹션 */}
+        <section className="pt-20 pb-8 flex items-center justify-center">
           <div className="text-center">
             <h1 className="text-4xl font-bold mb-4">Interview</h1>
             <p
               className={`text-lg ${isDarkMode ? "text-gray-300" : "text-gray-600"}`}
             >
-              면접 관련 내용이 들어갈 예정입니다.
+              면접 준비를 위한 핵심 포인트들
             </p>
           </div>
         </section>
+
+        {/* Interview 섹션들 */}
+        <InterviewSections />
       </main>
 
       {/* Scroll to top button - Fixed position */}
