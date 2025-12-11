@@ -2,7 +2,9 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   reactStrictMode: true,
-  devIndicators: false,
+devIndicators: {
+    buildActivity: false, 
+  },
   env: {
     VAPID_PRIVATE_KEY: process.env.VAPID_PRIVATE_KEY,
   },
