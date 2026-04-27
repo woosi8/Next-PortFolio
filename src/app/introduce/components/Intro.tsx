@@ -39,7 +39,7 @@ const Intro = () => {
               <span className="text-blue-400">최 혁</span> 입니다
             </h1>
             <p className="text-gray-400 text-lg mb-8">
-              Web을 다루는 4년차 프론트 앤드 개발자 최 혁 입니다.
+              Web을 다루는 5년차 프론트 앤드 개발자 최 혁 입니다.
             </p>
           </div>
 
@@ -51,7 +51,7 @@ const Intro = () => {
             >
               <div className="space-y-4">
                 <a
-                  href="https://rumbling-hook-1ff.notion.site/4-16c185919e2b80b2ad8fe3408ea1687b"
+                  href="https://rumbling-hook-1ff.notion.site/5-b0e5d5a2b8d54007883ba6d82b163494?pvs=74"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center justify-between cursor-pointer hover:opacity-80 transition-opacity rounded-lg p-2 -m-2"
