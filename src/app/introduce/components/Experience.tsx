@@ -8,6 +8,25 @@ const Experience = () => {
   const { ref, isVisible } = useScrollAnimation();
   const experiences = [
     {
+      company: "heypay",
+      companyInfo: "엔터프라이즈 B2B SaaS CRM/POS 웹 시스템",
+      period: "2024.07 - 재직중",
+      roles: [
+        { name: "프론트엔드 아키텍트", color: "bg-purple-600" },
+        { name: "프론트엔드 리드", color: "bg-green-600" },
+      ],
+      description: [
+        "🎯 프론트엔드 리드로서 기획 의도 파악부터 프로젝트 전체 아키텍처 구조 설계 및 핵심 비즈니스 로직 설계 총괄",
+        "🎯 FSD(Feature-Sliced Design) 변형 폴더 구조 구축 (view / container / components / types / constants)",
+        "🎯 POS 멀티 디바이스 환경 설정 아키텍처: Zustand 스토어와 BroadcastChannel을 연결하여 POS 동작 모드, 결제 단말기 파라미터, 듀얼 고객 전면 디스플레이 연동 상태 0.1초 미만 실시간 동기화",
+        "🎯 POS 판매 실제 단말기 연동 - 결제,취소,영수증,텍스프리 등 실제 포스 기능 구현",
+        "🎯 실시간 주문 수신 및 매장 알림 처리를 위한 SSE(Server-Sent Events) 단방향 스트리밍 파이프라인 구축",
+        "🎯 POS 영수증 템플릿 커스텀 엔진 개발 (로고/사업자/바코드/QR 매핑 실시간 DOM 미리보기 & @media print 감열지 프린터 픽셀 비율 동기화)",
+        "🎯 tRPC + Zod 기반 백엔드-프론트엔드 100% E2E Type Safety 구현 (Zero any, Zero Magic String)",
+        "🎯 @tanstack/react-virtual 기반 DOM 가상화(60fps) 및 수만 건 엑셀 스트리밍 가공 모듈 개발",
+      ],
+    },
+    {
       company: "레티튜",
       companyInfo: "글로벌 진학 로드맵 플랫폼 서비스",
       period: "2024.07 - 재직중",
@@ -17,7 +36,7 @@ const Experience = () => {
       ],
       description: [
         "🎯 글로벌 B2B 더 폰드 프론트앤드 재구축",
-        "🎯 프로젝트 프론트 구축부터 배포까지 담당",
+        "🎯 프로젝트 프론트 구축부터 배포까지 담당 (AWS Amplify)",
         "🎯 모바일 반응형 프로젝트 PWA 배포 담당",
       ],
     },
@@ -40,7 +59,7 @@ const Experience = () => {
     {
       company: "씨피에스",
       companyInfo: "용접 AI 솔루션 서비스",
-      period: "2021. 06 - 2021. 12",
+      period: "2021.06 - 2021.12",
       roles: [{ name: "프론트엔드 개발자", color: "bg-blue-600" }],
       description: [
         "🎯 프로토 타입 퍼블리싱 작업",
@@ -122,7 +141,7 @@ const Experience = () => {
                               >
                                 {link.icon}
                               </span>
-                            )
+                            ),
                           )
                         : null}
                     </div>

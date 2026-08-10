@@ -3,15 +3,30 @@
 import { useDarkMode } from "@/hooks/useDarkMode";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import { useState } from "react";
+import HeypayModal from "./HeypayModal";
 import LawsDaqModal from "./LawsDaqModal";
 import LetituModal from "./LetituModal";
 
 const Project = () => {
   const { isDarkMode } = useDarkMode();
   const { ref, isVisible } = useScrollAnimation();
+  const [isHeypayModalOpen, setIsHeypayModalOpen] = useState(false);
   const [isLetituModalOpen, setIsLetituModalOpen] = useState(false);
   const [isLawsDaqModalOpen, setIsLawsDaqModalOpen] = useState(false);
   const projects = [
+    {
+      name: "Heypay (B2B SaaS CRM/POS)",
+      description:
+        "엔터프라이즈 B2B SaaS CRM/POS 웹 시스템 (FSD 변형 아키텍처, tRPC E2E Type Safety, SSE 주문 실시간 스트리밍, BroadcastChannel 듀얼 디스플레이 동기화, 웹 pos 서비스 기능 구현)",
+      techStack: [
+        { name: "Next.js 15", icon: "/icons/Next.js.svg" },
+        { name: "TypeScript", icon: "/icons/TypeScript.svg" },
+        { name: "tRPC / Zod", icon: "/icons/React.svg" },
+        { name: "Tailwind CSS", icon: "/icons/Tailwind CSS.svg" },
+        { name: "AWS", icon: "/icons/AWS.svg" },
+      ],
+      modalType: "heypay",
+    },
     {
       name: "LETITU",
       description: "글로벌 진학 로드맵 플랫폼 서비스",
@@ -172,7 +187,9 @@ const Project = () => {
                       {project.modalType && (
                         <span
                           onClick={() => {
-                            if (project.modalType === "letitu") {
+                            if (project.modalType === "heypay") {
+                              setIsHeypayModalOpen(true);
+                            } else if (project.modalType === "letitu") {
                               setIsLetituModalOpen(true);
                             } else if (project.modalType === "lawsdaq") {
                               setIsLawsDaqModalOpen(true);
@@ -200,6 +217,10 @@ const Project = () => {
         </div>
       </div>
 
+      <HeypayModal
+        isOpen={isHeypayModalOpen}
+        onClose={() => setIsHeypayModalOpen(false)}
+      />
       <LetituModal
         isOpen={isLetituModalOpen}
         onClose={() => setIsLetituModalOpen(false)}
