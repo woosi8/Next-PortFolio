@@ -8,9 +8,9 @@ const Experience = () => {
   const { ref, isVisible } = useScrollAnimation();
   const experiences = [
     {
-      company: "heypay",
-      companyInfo: "엔터프라이즈 B2B SaaS CRM/POS 웹 시스템",
-      period: "2024.07 - 재직중",
+      company: "도젠소프트",
+      companyInfo: "병원 CRM 전문 솔루션 & POS 결제 및 CRM 솔루션 서비스",
+      period: "2025.09 - 재직중",
       roles: [
         { name: "프론트엔드 아키텍트", color: "bg-purple-600" },
         { name: "프론트엔드 리드", color: "bg-green-600" },
@@ -44,10 +44,7 @@ const Experience = () => {
       company: "로스닥",
       companyInfo: "법률 서비스 플랫폼",
       period: "2022.06 - 2024.04",
-      roles: [
-        { name: "프론트엔드 개발자", color: "bg-blue-600" },
-        { name: "프론트엔드 리드", color: "bg-green-600" },
-      ],
+      roles: [{ name: "프론트엔드 개발자", color: "bg-blue-600" }],
       description: [
         "🎯 의뢰인 페이지, 변호사 페이지, 어드민 페이지 구축 FE 담당",
         "🎯 프로젝트 라이브 서버를 배포 및 운영",
