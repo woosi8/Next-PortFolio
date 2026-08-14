@@ -4,7 +4,8 @@ export const interviewSectionsData = {
       id: 1,
       title: "핵심 포지셔닝 & 자기소개",
       icon: "👤",
-      description: "5년 차 프론트엔드 개발자 자기소개 및 엘리베이터 피치 (3가지 포맷)",
+      description:
+        "5년 차 프론트엔드 개발자 자기소개 및 엘리베이터 피치 (3가지 포맷)",
       content: `[🎯 프론트엔드 리드 (Senior-Bound FE) 핵심 포지셔닝]
 1. 기획 의도 파악 및 리더십: 비즈니스 기획 의도 파악부터 참여하여 프론트엔드 파트 전체 아키텍처 구조 설계, 데이터 흐름 및 핵심 로직 설계 총괄
 2. POS 시스템 설정 개발 역량: POS 장비/VAN 결제 단말기 연동, 영수증 템플릿 커스텀 엔진, Drag&Drop 단축키 배치, 듀얼 고객 전면 디스플레이 실시간 동기화 개발 총괄
@@ -51,7 +52,8 @@ export const interviewSectionsData = {
       id: 2,
       title: "4대 핵심 기술 포인트",
       icon: "💻",
-      description: "아키텍처/타입안전성, 상태관리/POS결제, DOM가상화/성능최적화, POS시스템설정/하드웨어제어엔진",
+      description:
+        "아키텍처/타입안전성, 상태관리/POS결제, DOM가상화/성능최적화, POS시스템설정/하드웨어제어엔진",
       content: `① [아키텍처/타입 안전성] FSD 기반 레이어 분리 & tRPC End-to-End 타입 시스템 구축
 • 배경 & 문제점: 대규모 CRM/ERP 프로젝트는 도메인이 커질수록 상태 얽힘 현상이 발생하고, 백엔드 API 명세 변경 시 프론트엔드에서 런타임 에러(Null/Undefined)가 빈번하게 발생합니다. 또한 개발자마다 폴더/로직 분리 기준이 달라 기술 부채가 누적됩니다.
 • 해결 방법 & 설계 포인트:
@@ -92,7 +94,8 @@ export const interviewSectionsData = {
       id: 3,
       title: "5년 차 심층 꼬리질문 (Deep-Dive Q&A)",
       icon: "🎯",
-      description: "POS 설정/하드웨어 제어, SSE 주문 통신, tRPC 선택 이유, Zustand+unstated-next 2-Layer 조합, 대용량 가상화 트러블슈팅, FSD 변형 이유",
+      description:
+        "POS 설정/하드웨어 제어, SSE 주문 통신, tRPC 선택 이유, Zustand+unstated-next 2-Layer 조합, 대용량 가상화 트러블슈팅, FSD 변형 이유",
       content: `Q. 실시간 주문 알림 수신 시 WebSocket 대신 SSE(Server-Sent Events)를 선택한 이유는 무엇인가요?
 A. "주문 수신 및 주방 알림 처리 도메인은 서버에서 프론트엔드로 데이터를 내려받는 단방향 통신 특성을 가집니다. WebSocket 대비 SSE는 HTTP/2 단일 커넥션 상에서 동작하여 별도의 양방향 프로토콜 오버헤드가 없으며, 브라우저 표준 EventSource API의 자동 재연결(Reconnection) 기능과 HTTP 네이티브 스트리밍의 가벼움을 활용할 수 있어 서버 및 클라이언트 메모리 리소스를 최적으로 절약할 수 있었기 때문입니다."
 
@@ -126,7 +129,8 @@ A. "정통 FSD의 6단계 레이어(shared -> entities -> features -> widgets ->
       id: 4,
       title: "면접 최종 체크리스트 & 트러블슈팅",
       icon: "📋",
-      description: "아키텍처 복기 다이어그램 및 2대 핵심 트러블슈팅 사례 (성능/도메인)",
+      description:
+        "아키텍처 복기 다이어그램 및 2대 핵심 트러블슈팅 사례 (성능/도메인)",
       content: `[🎯 면접 전 최종 체크리스트]
 1. 아키텍처 다이어그램 트레이닝:
    - Next.js App Router ↔ tRPC / Zod ↔ Zustand / Container ↔ View 간의 데이터 흐름과 단방향 의존성을 화이트보드나 종이에 즉석에서 그릴 수 있도록 복기.
@@ -141,8 +145,39 @@ A. "정통 FSD의 6단계 레이어(shared -> entities -> features -> widgets ->
 • [사례 B - 도메인/UX 트러블슈팅]
   - 상황: POS 복합 결제(EXCHANGE_VOUCHER 등) 처리 중 네트워크 오류 시 결제 상태 취소 미보장 및 중첩 모달 상태 꼬임 위험.
   - 해결: 단순 Toast 통보 방식 대신 선언적 useOverlay 커스텀 훅을 기반으로 Alert/Confirm 중첩 모달 승인 정책 수립 및 결제 트랜잭션 예외 흐름 선언적 제어.
-  - 결과: 결제 에러 처리 시 사용자 오류율 0% 달성 및 모달 상태 관리 안전성 극대화.`,
+  - 결과: 결제 에러 처리 시 사용자 오류율 0% 달성 및 모달 상태 관리 안전성 극대화.
+
+• [사례 C - 대규모 네트워크/실시간 통신 최적화]
+  - 상황: Q-Order 실시간 주문 수신(SSE) 중 네트워크 순간 단절 발생 시, 수천 대의 클라이언트가 동일 시점에 동시에 재접속을 시도하여 Thundering Herd(동시 재접속 폭주) 및 백엔드 서버 마비 위험 존재.
+  - 해결: Exponential Backoff(지수 백오프)에 Random Jitter(무작위 지연)를 결합한 재접속 알고리즘을 구현하고, 연속 3회 실패 시 서킷 브레이커 작동 및 AbortController 기반 자원 해제 로직 구축.
+  - 결과: 서버 단절 시 클라이언트 재접속 피크 트래픽을 90% 이상 확률적으로 분산시키고, 무한 재연결로 인한 브라우저 메모리 누수 및 백엔드 커넥션 고갈 완벽 차단.
+
+• [사례 D - 인증/네트워크 아키텍처 트러블슈팅]
+  - 상황: 액세스 토큰 만료 시 화면 내 다수 컴포넌트에서 동시에 401 Unauthorized 에러가 발생하며 서버로 중복 Refresh API가 동시 전송(Token Refresh Stampede)되어 인증 서버 부하 가중.
+  - 해결: tRPC 및 TanStack Query 인터셉터 레이어에 isRefreshing 락 플래그와 failedQueue 기반 Single-Flight 패턴 구축. 최초 1회만 Refresh API를 호출하고 대기 중인 요청은 갱신 완료 후 일괄 재실행(Drain).
+  - 결과: 토큰 만료 시 발생하던 불필요한 중복 Refresh API 호출을 1회로 단축하여 백엔드 인증 서버 부하 90% 이상 절감 및 세션 전환 안정성 확보.
+
+• [사례 E - 대용량 데이터/프론트엔드 렌더링 최적화]
+  - 상황: 수만 건의 재고 수불부 및 매출 리포트 데이터 조회 시 전체 DOM 동시 생성으로 인해 브라우저 탭 멈춤(Main Thread Blocking) 및 메모리 초과(OOM) 현상 발생.
+  - 해결: @tanstack/react-virtual 기반으로 뷰포트 내 보이는 20~30개 영역만 동적 재사용하는 DOM 가상화(Windowing) 기법 도입 및 TanStack Query staleTime(30초)·Window Focus Guard를 조합한 캐싱 정책 수립.
+  - 결과: 수만 건 대용량 조회 시에도 초기 렌더링 시간 90% 단축, 60fps의 부드러운 스크롤 성능 및 브라우저 메모리 사용량 최소화 달성.
+
+• [사례 F - POS 도메인/결제 무결성 트러블슈팅]
+  - 상황: POS 결제 승인 API 응답 지연 시 매장 점원의 연속 입력(연타) 및 외부 키 이벤트로 인한 중복 승인(Double Charge) 결제 사고 위험 존재.
+  - 해결: 결제 진입 즉시 결제 상태 머신(PROCESSING)과 연동하여 전역 상호작용을 선점(Preempt)하고, ESC 및 배경 클릭 등 모달 이벤트를 물리적으로 차단(e.preventDefault)하는 동기 락(Lock) 메커니즘 구축.
+  - 결과: 네트워크 지연 및 사용자 연타 상황에서도 단 1회의 결제 무결성 보장 및 중복 결제 오류 발생률 0% 달성.
+  
+• [사례 5 - 하드웨어/POS 단말기 프로토콜 통신 트러블슈팅]
+  - 상황: 순수 웹 브라우저 환경에서 보안 정책(CORS, Mixed Content) 및 모듈 제약으로 인해 로컬 결제 단말기(KCP/KSNET VCAT)와의 직접적인 카드/현금 영수증 결제 통신 및 하드웨어 프린팅 불가.
+  - 해결: RSA 비대칭 암호화(JSEncrypt)를 통한 데이터 보안화, 동적 script 노드 라이프사이클 관리 기반의 JSONP 및 WebSocket 하이브리드 브릿지 엔진 구축. 48컬럼 바이트 연산 정렬 및 QR 코드 분할 출력 알고리즘 구현.
+  - 결과: 무거운 플러그인 설치 없이 브라우저 환경에서 IC 카드 결제, 현금영수증, 영수증 텍스트/QR 프린팅을 100% 무결성으로 실시간 제어 성공.
+
+• [사례 6 - 듀얼 디스플레이 하드웨어 이중화 및 상태 동기화]
+  - 상황: POS 메인 모니터와 점원/고객용 2차 보조 디스플레이(Secondary Display) 간의 실시간 장바구니/결제 화면 동기화 및 모니터 창 분리 관리 필요.
+  - 해결: Multi-Window API 관리자(WindowManager) 및 브라우저 이벤트 버스를 구축하여 듀얼 모니터 팝업 창의 생명주기를 감시/제어하고, 결제 및 상품 변경 이벤트를 실시간 동기화.
+  - 결과: 이종 디스플레이 간 데이터 교동 지연 시간 0ms 달성 및 실시간 고객용 디스플레이 피드백 경험 극대화.
+  
+  `,
     },
   ],
 };
-
