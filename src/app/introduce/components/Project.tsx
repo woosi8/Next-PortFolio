@@ -6,6 +6,8 @@ import { useState } from "react";
 import HeypayModal from "./HeypayModal";
 import LawsDaqModal from "./LawsDaqModal";
 import LetituModal from "./LetituModal";
+import { ProjectItem } from "@/types/project.type";
+import ReservationModal from "./ReservationModal";
 
 const Project = () => {
   const { isDarkMode } = useDarkMode();
@@ -13,7 +15,9 @@ const Project = () => {
   const [isHeypayModalOpen, setIsHeypayModalOpen] = useState(false);
   const [isLetituModalOpen, setIsLetituModalOpen] = useState(false);
   const [isLawsDaqModalOpen, setIsLawsDaqModalOpen] = useState(false);
-  const projects = [
+  const [isReservationModalOpen, setIsReservationModalOpen] = useState(false);
+
+  const projects: ProjectItem[] = [
     {
       name: "Heypay (B2B SaaS CRM/POS)",
       description:
@@ -53,6 +57,58 @@ const Project = () => {
         { name: "GitHub", icon: "/icons/GitHub.svg" },
       ],
       modalType: "lawsdaq",
+    },
+    {
+      id: "reservation",
+      name: "풀스택 예약 관리 플랫폼 (사이드 프로젝트)",
+      title: "풀스택 예약 관리 플랫폼 (사이드 프로젝트)",
+      subtitle:
+        "Next.js 15+ App Router & Supabase PostgreSQL 기반의 실시간 일정/예약 관리 시스템",
+      period: "2026.08 - 진행 중",
+      category: "Full Stack / Web Application",
+      description:
+        "Next.js 15+ App Router & Supabase PostgreSQL 기반의 실시간 일정/예약 관리 시스템 (사용자 권한별 캘린더 뷰, 실시간 시간 슬롯 이중 선점 방지, OAuth 2.0 및 Supabase 연동)",
+      summary:
+        "사용자 권한(ADMIN / USER)별 캘린더 뷰 분기, 실시간 시간 슬롯 이중 선점 방지, Kakao/Google OAuth 2.0 소셜 로그인 및 Supabase PostgreSQL 데이터베이스 직접 연동을 지원하는 풀스택 예약 플랫폼입니다.",
+      link: "https://next-reservation-project-49mo.vercel.app",
+      demoUrl: "https://next-reservation-project-49mo.vercel.app",
+      modalType: "reservation",
+      techStack: [
+        { name: "Next.js 15+", icon: "/icons/Next.js.svg" },
+        { name: "TypeScript", icon: "/icons/TypeScript.svg" },
+        { name: "Supabase", icon: "/icons/React.svg" },
+        { name: "Zustand", icon: "/icons/React.svg" },
+        { name: "TanStack Query v5", icon: "/icons/React.svg" },
+        { name: "Tailwind CSS v4", icon: "/icons/Tailwind CSS.svg" },
+        { name: "JWT & OAuth 2.0", icon: "/icons/React.svg" },
+        { name: "FSD Architecture" },
+        { name: "Vitest" },
+        { name: "Playwright" },
+      ],
+      testAccounts: [
+        {
+          role: "👑 관리자 (ADMIN)",
+          id: "testadmin1",
+          pw: "T@estadmin1",
+          description:
+            "전체 회원 예약 현황 조회, 승인/거절/삭제 및 관리자 일정 직접 등록",
+        },
+        {
+          role: "👤 일반회원 (USER)",
+          id: "testuser1",
+          pw: "T@estuser1",
+          description:
+            "원하는 시간 슬롯 예약 신청, 본인 예약 상세 조회 및 취소",
+        },
+      ],
+      keyFeatures: [
+        "FSD(Feature-Sliced Design) 레이어 아키텍처 기반의 확장 가능한 모듈화 구조 설계",
+        "Supabase PostgreSQL members 테이블의 role_type(ROLE_ADMIN, ROLE_USER)과 실시간 권한 및 세션 동기화",
+        "시간 슬롯별 이중 예약 선점 방지 커스텀 훅(useOccupiedSlots)을 통한 데이터 무결성 보장",
+        "초기 렌더링 및 달 이동 시 이전 데이터 잔상 없이 깔끔하게 동작하는 오버레이 로딩 스피너(CalendarLoadingSpinner)",
+        "HttpOnly Cookie 기반 JWT 인증 보안 및 카카오/구글 OAuth 2.0 소셜 회원가입/로그인 연동",
+        "모달 바깥 배경(Backdrop) 영역 클릭 시 자연스럽게 닫히는 반응형 UX 제공",
+      ],
     },
     {
       name: "리액트 포트폴리오 프로젝트",
@@ -149,39 +205,65 @@ const Project = () => {
                       <h3
                         className={` font-medium mb-2 ${isDarkMode ? "text-white" : "text-gray-900"}`}
                       >
-                        {project.name}
+                        {project.name || project.title}
                       </h3>
                     </td>
                     <td className="py-6 px-4 w-170">
                       <p
                         className={`text-sm mb-3 ${isDarkMode ? "text-gray-300" : "text-gray-700"}`}
                       >
-                        {project.description}
+                        {project.description ||
+                          project.subtitle ||
+                          project.summary}
                       </p>
                       <div className="flex gap-2 flex-wrap">
-                        {project.techStack.map((tech, i) => (
-                          <div key={i} className="flex items-center gap-1">
-                            <img
-                              src={tech.icon}
-                              alt={tech.name}
-                              className="w-5 h-5"
-                            />
-                            <span className="text-xs text-gray-400">
-                              {tech.name}
-                            </span>
-                          </div>
-                        ))}
+                        {project.techStack.map((tech, i) => {
+                          const isString = typeof tech === "string";
+                          const name = isString ? tech : tech.name;
+                          const icon = isString ? undefined : tech.icon;
+
+                          return (
+                            <div key={i} className="flex items-center gap-1">
+                              {icon && (
+                                <img
+                                  src={icon}
+                                  alt={name}
+                                  className="w-5 h-5"
+                                />
+                              )}
+                              <span className="text-xs text-gray-400">
+                                {name}
+                              </span>
+                            </div>
+                          );
+                        })}
                       </div>
                     </td>
                     <td className="py-6 px-4">
-                      {project.link && (
+                      {(project.link || project.demoUrl) && (
                         <a
-                          href={project.link}
+                          href={project.link || project.demoUrl}
                           target="_blank"
                           rel="noopener noreferrer"
                           className="text-blue-400 cursor-pointer text-lg hover:text-blue-300 transition-colors mr-2"
+                          title="웹사이트 / 데모"
                         >
                           🔗
+                        </a>
+                      )}
+                      {project.githubUrl && (
+                        <a
+                          href={project.githubUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-gray-400 cursor-pointer text-lg hover:text-white transition-colors mr-2"
+                          title="GitHub"
+                        >
+                          <img
+                            src="/icons/GitHub.svg"
+                            alt="GitHub"
+                            className="w-5 h-5 inline-block"
+                          />
                         </a>
                       )}
                       {project.modalType && (
@@ -193,6 +275,8 @@ const Project = () => {
                               setIsLetituModalOpen(true);
                             } else if (project.modalType === "lawsdaq") {
                               setIsLawsDaqModalOpen(true);
+                            } else if (project.modalType === "reservation") {
+                              setIsReservationModalOpen(true);
                             }
                           }}
                           className="text-blue-400 cursor-pointer text-lg hover:text-blue-300 transition-colors"
@@ -228,6 +312,10 @@ const Project = () => {
       <LawsDaqModal
         isOpen={isLawsDaqModalOpen}
         onClose={() => setIsLawsDaqModalOpen(false)}
+      />
+      <ReservationModal
+        isOpen={isReservationModalOpen}
+        onClose={() => setIsReservationModalOpen(false)}
       />
     </section>
   );
