@@ -7,6 +7,7 @@ import HeypayModal from "./HeypayModal";
 import LawsDaqModal from "./LawsDaqModal";
 import LetituModal from "./LetituModal";
 import { ProjectItem } from "@/types/project.type";
+import ReservationModal from "./ReservationModal";
 
 const Project = () => {
   const { isDarkMode } = useDarkMode();
@@ -14,6 +15,8 @@ const Project = () => {
   const [isHeypayModalOpen, setIsHeypayModalOpen] = useState(false);
   const [isLetituModalOpen, setIsLetituModalOpen] = useState(false);
   const [isLawsDaqModalOpen, setIsLawsDaqModalOpen] = useState(false);
+  const [isReservationModalOpen, setIsReservationModalOpen] = useState(false);
+
   const projects: ProjectItem[] = [
     {
       name: "Heypay (B2B SaaS CRM/POS)",
@@ -69,7 +72,7 @@ const Project = () => {
         "사용자 권한(ADMIN / USER)별 캘린더 뷰 분기, 실시간 시간 슬롯 이중 선점 방지, Kakao/Google OAuth 2.0 소셜 로그인 및 Supabase PostgreSQL 데이터베이스 직접 연동을 지원하는 풀스택 예약 플랫폼입니다.",
       link: "https://next-reservation-project-49mo.vercel.app",
       demoUrl: "https://next-reservation-project-49mo.vercel.app",
-      githubUrl: "https://github.com/choihyuck/Reservation-Project",
+      modalType: "reservation",
       techStack: [
         { name: "Next.js 15+", icon: "/icons/Next.js.svg" },
         { name: "TypeScript", icon: "/icons/TypeScript.svg" },
@@ -272,6 +275,8 @@ const Project = () => {
                               setIsLetituModalOpen(true);
                             } else if (project.modalType === "lawsdaq") {
                               setIsLawsDaqModalOpen(true);
+                            } else if (project.modalType === "reservation") {
+                              setIsReservationModalOpen(true);
                             }
                           }}
                           className="text-blue-400 cursor-pointer text-lg hover:text-blue-300 transition-colors"
@@ -307,6 +312,10 @@ const Project = () => {
       <LawsDaqModal
         isOpen={isLawsDaqModalOpen}
         onClose={() => setIsLawsDaqModalOpen(false)}
+      />
+      <ReservationModal
+        isOpen={isReservationModalOpen}
+        onClose={() => setIsReservationModalOpen(false)}
       />
     </section>
   );

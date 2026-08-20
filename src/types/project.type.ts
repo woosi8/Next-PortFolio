@@ -3,7 +3,7 @@ export type TechItem = {
   icon?: string;
 };
 
-export type ProjectModalType = "heypay" | "letitu" | "lawsdaq";
+export type ProjectModalType = "heypay" | "letitu" | "lawsdaq" | "reservation";
 
 export type TestAccount = {
   role: string;
