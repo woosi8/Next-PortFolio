@@ -29,7 +29,7 @@ const Experience = () => {
     {
       company: "레티튜",
       companyInfo: "글로벌 진학 로드맵 플랫폼 서비스",
-      period: "2024.07 - 재직중",
+      period: "2024.07 - 2025.09",
       roles: [
         { name: "프론트엔드 개발자", color: "bg-blue-600" },
         { name: "프론트엔드 리드", color: "bg-green-600" },
